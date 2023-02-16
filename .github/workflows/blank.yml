@@ -10,5 +10,5 @@ jobs:
   b:
     runs-on: ubuntu-latest
     steps:
-      - name: actions/checkout@v3
+      - uses: actions/checkout@v3
       - run: echo ${{github.event }}
