@@ -1,0 +1,14 @@
+on:
+  workflow_run:
+    workflows: ['a']
+    types: ['completed']
+    branches: ['test/**']
+
+env:
+  BRANCH_NAME: 'renovate-snap/${{github.event.number}}'
+jobs:
+  b:
+    runs-on: ubuntu-latest
+    steps:
+      - name: actions/checkout@v3
+      - run: echo ${{github.event }}
