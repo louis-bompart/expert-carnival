@@ -5,10 +5,11 @@ on:
     branches: ['test/**']
 
 env:
-  BRANCH_NAME: 'renovate-snap/${{github.event.number}}'
+  PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
+  BRANCH_NAME: 'renovate-snap/${{env.PR_NUMBER}}'
 jobs:
   b:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo "${{toJSON(github) }}"
+      - run: echo  ${{ env.BRANCH_NAME }}
